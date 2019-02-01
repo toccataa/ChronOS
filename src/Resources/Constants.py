@@ -44,11 +44,13 @@ def get_const_input_prompt() -> str:
                    "------------------------\n"
     return input_prompt
 
+
 def get_const_choice_invalid() -> str:
     choice_invalid = "-----------------------------------------------------------------------\n" \
                      "Please enter one of the numbers listed (just the number, nothing else)." \
                      "-----------------------------------------------------------------------\n"
     return choice_invalid
+
 
 def get_const_workday_data_prompt() -> str:
     workday_data_prompt = "----------------------------------------------------------\n" \
@@ -58,3 +60,4 @@ def get_const_workday_data_prompt() -> str:
                           "Use format DD.MM.YYYY for day_date and HH:MM for the rest.\n" \
                           "----------------------------------------------------------\n"
     return workday_data_prompt
+

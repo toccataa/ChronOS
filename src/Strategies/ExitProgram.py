@@ -1,6 +1,6 @@
 from Strategies.Strategy import Strategy
 
 
-class AddWorkday(Strategy):
+class ExitProgram(Strategy):
     def start_strategy(self, actor):
-        actor.add_workday()
+        actor.exit_program()

@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from Workday import Workday
+import Workday
 from Resources import CommonMethods
 
 
