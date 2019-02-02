@@ -17,7 +17,7 @@ class ConsoleUi:
             print(f"{num}.) {menu_item}")
 
     def menu_loop(self) -> None:
-        input_prompt = Constants.get_const_input_prompt()
+        input_prompt = Constants.get_const_msg_input_prompt()
         number_of_menu_items = len(self.__main_menu)
 
         while True:
@@ -28,7 +28,7 @@ class ConsoleUi:
                 user_choice = self.__strategies[user_choice]
                 self.__notify_observers(user_choice)
             else:
-                message_choice_invalid = Constants.get_const_choice_invalid()
+                message_choice_invalid = Constants.get_const_msg_choice_invalid()
                 print(message_choice_invalid)
 
             self.display_main_menu()
@@ -43,17 +43,24 @@ class ConsoleUi:
         return ""
 
     def enter_new_workday_data(self) -> dict:
-        workday_data_prompt = Constants.get_const_workday_data_prompt()
+        workday_data_prompt = Constants.get_const_msg_workday_data_prompt()
         workday_data_keys = Constants.get_const_addable_time_keys()
         workday_data = {}
 
         print(workday_data_prompt)
 
         for key in workday_data_keys:
-            if key == "day_date":
-                workday_data[key] = datetime.strptime(input(f"{key}: "), "%d.%m.%Y")
-            else:
-                workday_data[key] = CommonMethods.timedelta_parse(input(f"{key}: "))
+            while True:
+                try:
+                    if key == "day_date":
+                        workday_data[key] = datetime.strptime(input(f"{key}: "), "%d.%m.%Y")
+                    else:
+                        workday_data[key] = CommonMethods.timedelta_parse(input(f"{key}: "))
+                except ValueError:
+                    use_correct_format = Constants.get_const_msg_use_correct_format()
+                    print(use_correct_format)
+                else:
+                    break
 
         return workday_data
 

@@ -4,28 +4,28 @@ import Workday
 from Resources import CommonMethods
 
 
-class TimeLog:
+class TimeKeeper:
     def __init__(self):
-        self.__timeLog = {}
+        self.__timeKeeper = {}
 
     def add_workday(self, workday: Workday):
-        self.__timeLog[workday.get_day_date()] = workday
+        self.__timeKeeper[workday.get_day_date()] = workday
 
     def get_all_workdays(self) -> dict:
-        return self.__timeLog
+        return self.__timeKeeper
 
     def get_workday_of_day_date(self, day_date: datetime) -> Workday:
-        return self.__timeLog[day_date]
+        return self.__timeKeeper[day_date]
 
     def get_time_log(self):
-        return self.__timeLog
+        return self.__timeKeeper
 
     def calculate_total_time_balance(self) -> (timedelta, bool):
         positive_balance = timedelta(seconds=0)
         negative_balance = timedelta(seconds=0)
         is_total_time_balance_negative = False
 
-        for day_date, workday in self.__timeLog.items():
+        for day_date, workday in self.__timeKeeper.items():
             time_balance_for_current_day, negativity_flag = workday.get_time_balance_with_negativity_flag()
             if negativity_flag:
                 negative_balance += time_balance_for_current_day

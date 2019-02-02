@@ -38,21 +38,21 @@ def get_const_main_menu() -> dict:
     return main_menu
 
 
-def get_const_input_prompt() -> str:
+def get_const_msg_input_prompt() -> str:
     input_prompt = "------------------------\n" \
                    "Please select an option.\n" \
                    "------------------------\n"
     return input_prompt
 
 
-def get_const_choice_invalid() -> str:
+def get_const_msg_choice_invalid() -> str:
     choice_invalid = "-----------------------------------------------------------------------\n" \
-                     "Please enter one of the numbers listed (just the number, nothing else)." \
+                     "Please enter one of the numbers listed (just the number, nothing else).\n" \
                      "-----------------------------------------------------------------------\n"
     return choice_invalid
 
 
-def get_const_workday_data_prompt() -> str:
+def get_const_msg_workday_data_prompt() -> str:
     workday_data_prompt = "----------------------------------------------------------\n" \
                           "Please enter the following data for new workday\n" \
                           "(if one or more pieces of data are not available yet,\n" \
@@ -61,3 +61,9 @@ def get_const_workday_data_prompt() -> str:
                           "----------------------------------------------------------\n"
     return workday_data_prompt
 
+
+def get_const_msg_use_correct_format() -> str:
+    use_correct_format = "--------------------------------------------------------------------------\n" \
+                         "Please use the correct format: DD.MM.YYYY for date, HH:MM for time of day.\n" \
+                         "--------------------------------------------------------------------------"
+    return use_correct_format

@@ -1,5 +1,5 @@
 import Workday
-from TimeLog import TimeLog
+from TimeKeeper import TimeKeeper
 from ConsoleUi import ConsoleUi
 
 from Strategies import Strategy
@@ -9,7 +9,7 @@ class MainController:
     def __init__(self):
         self.__ui = None
         self.__newWorkday = None
-        self.__timeLog = TimeLog()
+        self.__timeKeeper = TimeKeeper()
 
     def run_program(self):
         self.__ui = ConsoleUi()
@@ -23,10 +23,10 @@ class MainController:
         for key, data in new_workday_data.items():
             self.__newWorkday.add_time(key, data)
         self.__newWorkday.calculate_times()
-        self.__timeLog.add_workday(self.__newWorkday)
+        self.__timeKeeper.add_workday(self.__newWorkday)
 
     def list_workdays(self):
-        all_workdays = self.__timeLog.get_all_workdays()
+        all_workdays = self.__timeKeeper.get_all_workdays()
         for date, workday in all_workdays.items():
             print(date)
             print(workday.get_all_times_in_printable_format())
