@@ -1,6 +1,18 @@
 from datetime import datetime, timedelta
 
 
+def get_longest_line_length(multiline_string: str) -> int:
+    lines_list = multiline_string.splitlines()
+    longest_line_length = 0
+
+    for line in lines_list:
+        current_line_length = len(line)
+        if current_line_length > longest_line_length:
+            longest_line_length = current_line_length
+
+    return longest_line_length
+
+
 def get_printable_date(date: datetime) -> str:
     return date.strftime("%d.%m.%Y")
 

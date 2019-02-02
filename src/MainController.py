@@ -1,4 +1,5 @@
 from ConsoleUi import ConsoleUi
+from Resources import Constants
 from Resources.Strategies import Strategy
 from Resources.TimeHandlers.TimeKeeper import TimeKeeper
 
@@ -19,9 +20,14 @@ class MainController:
 
     def list_workdays(self):
         all_workdays = self.__timeKeeper.get_all_workdays()
-        for date, workday in all_workdays.items():
-            print(date)
-            print(workday.get_all_times_in_printable_format())
+
+        if len(all_workdays) == 0:
+            message = Constants.get_const_msg_no_workdays_on_record()
+            self.__ui.display(message)
+        else:
+            for date, workday in all_workdays.items():
+                print(date)
+                print(workday.get_all_times_in_printable_format())
 
     def exit_program(self):
         quit()

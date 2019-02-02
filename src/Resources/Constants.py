@@ -39,31 +39,28 @@ def get_const_main_menu() -> dict:
 
 
 def get_const_msg_input_prompt() -> str:
-    input_prompt = "------------------------\n" \
-                   "Please select an option.\n" \
-                   "------------------------\n"
+    input_prompt = "Please select an option."
     return input_prompt
 
 
 def get_const_msg_choice_invalid() -> str:
-    choice_invalid = "-----------------------------------------------------------------------\n" \
-                     "Please enter one of the numbers listed (just the number, nothing else).\n" \
-                     "-----------------------------------------------------------------------\n"
+    choice_invalid = "Please enter one of the numbers listed (just the number, nothing else)."
     return choice_invalid
 
 
 def get_const_msg_workday_data_prompt() -> str:
-    workday_data_prompt = "----------------------------------------------------------\n" \
-                          "Please enter the following data for new workday\n" \
+    workday_data_prompt = "Please enter the following data for new workday\n" \
                           "(if one or more pieces of data are not available yet,\n" \
                           "just hit Enter without entry.)\n" \
-                          "Use format DD.MM.YYYY for day_date and HH:MM for the rest.\n" \
-                          "----------------------------------------------------------\n"
+                          "Use format DD.MM.YYYY for day_date and HH:MM for the rest."
     return workday_data_prompt
 
 
 def get_const_msg_use_correct_format() -> str:
-    use_correct_format = "--------------------------------------------------------------------------\n" \
-                         "Please use the correct format: DD.MM.YYYY for date, HH:MM for time of day.\n" \
-                         "--------------------------------------------------------------------------"
+    use_correct_format = "Please use the correct format: DD.MM.YYYY for date, HH:MM for time of day."
     return use_correct_format
+
+
+def get_const_msg_no_workdays_on_record() -> str:
+    no_workdays_on_record = "There are no workdays on record yet. Nothing to display."
+    return no_workdays_on_record
