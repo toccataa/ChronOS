@@ -64,3 +64,13 @@ def get_const_msg_use_correct_format() -> str:
 def get_const_msg_no_workdays_on_record() -> str:
     no_workdays_on_record = "There are no workdays on record yet. Nothing to display."
     return no_workdays_on_record
+
+
+def get_const_msg_title() -> str:
+    title = "Welcome to ChronOS."
+    return title
+
+
+def get_const_msg_exiting_program() -> str:
+    exiting_program = "Exiting program."
+    return exiting_program

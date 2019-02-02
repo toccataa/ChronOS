@@ -13,6 +13,19 @@ def get_longest_line_length(multiline_string: str) -> int:
     return longest_line_length
 
 
+def get_menu_string(menu_dict: dict):
+    menu_list = []
+    menu_length = len(menu_dict)
+    for num, (key, menu_item) in enumerate(menu_dict.items(), start=1):
+        if num < menu_length:
+            menu_line = f"{num}.) {menu_item}\n"
+        else:
+            menu_line = f"{num}.) {menu_item}"
+        menu_list.append(menu_line)
+    menu_str = "".join(menu_list)
+    return menu_str
+
+
 def get_printable_date(date: datetime) -> str:
     return date.strftime("%d.%m.%Y")
 
@@ -25,6 +38,13 @@ def get_zeroed_time_string(time_period: int) -> str:
     else:
         time_str = str(time_period)
     return time_str
+
+
+def get_string_with_separator(text: str) -> str:
+    separator_length = get_longest_line_length(text)
+    separator = "-" * separator_length
+    text = f"{separator}\n{text}\n{separator}"
+    return text
 
 
 def get_hour_minute_str_from_timedelta(time_period: timedelta) -> str:
@@ -44,15 +64,6 @@ def get_interpreted_time_balance(time_balance: timedelta, time_balance_negativit
     else:
         interpreted_time_balance = get_hour_minute_str_from_timedelta(time_balance)
     return interpreted_time_balance
-
-
-def is_number(check: str) -> bool:
-    try:
-        int(check)
-    except ValueError:
-        return False
-    else:
-        return True
 
 
 def timedelta_parse(time_to_parse: str) -> timedelta:

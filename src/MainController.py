@@ -1,18 +1,20 @@
-from ConsoleUi import ConsoleUi
+from Resources import UIs
 from Resources import Constants
 from Resources.Strategies import Strategy
-from Resources.TimeHandlers.TimeKeeper import TimeKeeper
+from Resources import TimeHandlers
 
 
 class MainController:
     def __init__(self):
-        self.__timeKeeper = TimeKeeper()
-        self.__ui = ConsoleUi()
+        self.__timeKeeper = TimeHandlers.get_timekeeper()
+        self.__ui = UIs.get_console_ui()
 
     def run_program(self):
         self.__ui.subscribe(self)
+        title = Constants.get_const_msg_title()
+        self.__ui.display(title)
         self.__ui.display_main_menu()
-        self.__ui.menu_loop()
+        self.__ui.main_menu_loop()
 
     def add_workday(self):
         new_workday_data = self.__ui.enter_new_workday_data()
@@ -30,6 +32,8 @@ class MainController:
                 print(workday.get_all_times_in_printable_format())
 
     def exit_program(self):
+        exit_message = Constants.get_const_msg_exiting_program()
+        self.__ui.display(exit_message)
         quit()
 
     def update(self, strategy: Strategy):
@@ -38,4 +42,3 @@ class MainController:
 
 ChronOS = MainController()
 ChronOS.run_program()
-

@@ -12,25 +12,18 @@ class ConsoleUi:
         self.__observers = []
 
     def display_main_menu(self) -> None:
-        menu_list = []
-        menu_length = len(self.__main_menu)
-        for num, (key, menu_item) in enumerate(self.__main_menu.items(), start=1):
-            if num < menu_length:
-                menu_line = f"{num}.) {menu_item}\n"
-            else:
-                menu_line = f"{num}.) {menu_item}"
-            menu_list.append(menu_line)
-        menu_str = "".join(menu_list)
-        self.display(menu_str)
+        main_menu_str = CommonMethods.get_menu_string(self.__main_menu)
+        self.display(main_menu_str)
 
-    def menu_loop(self) -> None:
+    def main_menu_loop(self) -> None:
         input_prompt = Constants.get_const_msg_input_prompt()
+        input_prompt = f"{CommonMethods.get_string_with_separator(input_prompt)}\n"
         number_of_menu_items = len(self.__main_menu)
 
         while True:
             user_choice = input(input_prompt)[0:1]
 
-            if CommonMethods.is_number(user_choice) and self.__is_user_choice_valid(user_choice, number_of_menu_items):
+            if user_choice.isdigit() and self.__is_user_choice_valid(user_choice, number_of_menu_items):
                 user_choice = self.__get_key_for_number(int(user_choice))
                 user_choice = self.__strategies[user_choice]
                 self.__notify_observers(user_choice)
@@ -72,9 +65,7 @@ class ConsoleUi:
         return workday_data
 
     def display(self, message: str):
-        separator_length = CommonMethods.get_longest_line_length(message)
-        separator = "-" * separator_length
-        message = f"{separator}\n{message}\n{separator}"
+        message = CommonMethods.get_string_with_separator(message)
         print(message)
 
     def subscribe(self, observer) -> None:
