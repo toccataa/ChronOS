@@ -1,4 +1,5 @@
-from Strategies import AddWorkday, ListWorkdays, ExitProgram
+from Resources.Strategies import AddWorkday, ExitProgram
+from Resources.Strategies import ListWorkdays
 
 
 def get_const_strategies_dict() -> dict:

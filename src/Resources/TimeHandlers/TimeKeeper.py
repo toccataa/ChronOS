@@ -1,15 +1,18 @@
 from datetime import datetime, timedelta
 
-import Workday
 from Resources import CommonMethods
+from Resources.TimeHandlers.Workday import Workday
+import Resources.TimeHandlers.WorkdayFactory as WorkdayFactory
 
 
 class TimeKeeper:
     def __init__(self):
+        self.__newWorkday = None
         self.__timeKeeper = {}
 
-    def add_workday(self, workday: Workday):
-        self.__timeKeeper[workday.get_day_date()] = workday
+    def add_workday(self, new_workday_data: dict):
+        new_workday = WorkdayFactory.create_workday(new_workday_data)
+        self.__timeKeeper[new_workday.get_day_date()] = new_workday
 
     def get_all_workdays(self) -> dict:
         return self.__timeKeeper

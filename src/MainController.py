@@ -1,29 +1,21 @@
-import Workday
-from TimeKeeper import TimeKeeper
 from ConsoleUi import ConsoleUi
-
-from Strategies import Strategy
+from Resources.Strategies import Strategy
+from Resources.TimeHandlers.TimeKeeper import TimeKeeper
 
 
 class MainController:
     def __init__(self):
-        self.__ui = None
-        self.__newWorkday = None
         self.__timeKeeper = TimeKeeper()
+        self.__ui = ConsoleUi()
 
     def run_program(self):
-        self.__ui = ConsoleUi()
         self.__ui.subscribe(self)
         self.__ui.display_main_menu()
         self.__ui.menu_loop()
 
     def add_workday(self):
         new_workday_data = self.__ui.enter_new_workday_data()
-        self.__newWorkday = Workday.Workday()
-        for key, data in new_workday_data.items():
-            self.__newWorkday.add_time(key, data)
-        self.__newWorkday.calculate_times()
-        self.__timeKeeper.add_workday(self.__newWorkday)
+        self.__timeKeeper.add_workday(new_workday_data)
 
     def list_workdays(self):
         all_workdays = self.__timeKeeper.get_all_workdays()

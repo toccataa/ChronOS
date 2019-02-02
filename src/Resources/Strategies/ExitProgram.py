@@ -1,4 +1,4 @@
-from Strategies.Strategy import Strategy
+from Resources.Strategies.Strategy import Strategy
 
 
 class ExitProgram(Strategy):

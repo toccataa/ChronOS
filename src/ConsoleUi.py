@@ -1,8 +1,8 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from Resources import Constants, CommonMethods
-from Strategies import Strategy
-from Strategies.Resources import Constants as StrategyConstants
+from Resources.Strategies import Strategy
+from Resources.Strategies.Resources import Constants as StrategyConstants
 
 
 class ConsoleUi:

@@ -9,6 +9,14 @@ class Workday:
         self.__day_times = Constants.get_const_day_times_dict()
         self.__is_time_balance_negative = False
 
+    @classmethod
+    def construct_from_dict(cls, new_workday_data: dict):
+        new_workday = cls()
+        for key, data in new_workday_data.items():
+            new_workday.add_time(key, data)
+        new_workday.calculate_times()
+        return new_workday
+
     def is_lunch_total_calculable(self) -> bool:
         return self.__day_times["lunch_start"] is not None and self.__day_times["lunch_finish"] is not None
 
